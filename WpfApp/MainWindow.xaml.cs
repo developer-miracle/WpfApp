@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +23,11 @@ namespace WpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        DB dB;
         public MainWindow()
         {
             InitializeComponent();
+            dB = new DB();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -44,17 +47,17 @@ namespace WpfApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            dataGrid.ItemsSource = DB.Select(textBox.Text);
+            dataGrid.ItemsSource = dB.Select(textBox.Text);
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            dB.Update();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            dB.Update();
         }
     }
 }

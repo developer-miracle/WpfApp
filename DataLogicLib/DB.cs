@@ -9,30 +9,45 @@ using System.Threading.Tasks;
 
 namespace DataLogicLib
 {
-    public static class DB
+    public class DB
     {
-        static string connectionString;
-        //static SqlConnection sqlConnection;
-        static SqlDataAdapter sqlDataAdapter;
-        static DataSet dataSet;
-        static SqlCommandBuilder sqlCommandBuilder;
+        private string connectionString;
+        private SqlConnection sqlConnection;
+        public DataSet dataSet;
+        private SqlDataAdapter sqlDataAdapter;
+        private SqlCommandBuilder sqlCommandBuilder;
 
         //static DbCommand dbCommand;
-        static DB()
+        public DB()
         {
             connectionString = ConfigurationManager.ConnectionStrings["LocalConnectToDB"].ConnectionString;
+            sqlConnection = new SqlConnection(connectionString);
         }
-        public static DataView Select(string querry)
+        public DataView Select(string querry)
         {
-
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            try
             {
                 dataSet = new DataSet();
                 sqlDataAdapter = new SqlDataAdapter(querry, sqlConnection);
                 sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
                 sqlDataAdapter.Fill(dataSet, "Books");
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
             return dataSet.Tables["Books"].DefaultView;
+        }
+        public void Update()
+        {
+            try
+            {
+                sqlDataAdapter.Update(dataSet, "Books");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 }
