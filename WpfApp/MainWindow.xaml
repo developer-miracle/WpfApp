@@ -5,10 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="176,233,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="449,233,0,0" VerticalAlignment="Top" Width="75"/>
-
-    </Grid>
+        Title="bookstorage" Height="400" Width="400"
+        WindowStyle="SingleBorderWindow"
+        AllowsTransparency="False"
+        ShowInTaskbar="True"
+        WindowStartupLocation="CenterScreen"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Closing="Window_Closing"
+        Loaded="Window_Loaded">
+        <!--<Window.Background>
+            <ImageBrush ImageSource="background.png">
+        </ImageBrush>-->
+    <!--</Window.Background>-->
+        <Grid>
+            <Button Content="Select" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+            <Button Content="Update" HorizontalAlignment="Left" Margin="307,38,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="SELECT * FROM Books" VerticalAlignment="Top" Width="372" Name="textBox"/>
+            <DataGrid HorizontalAlignment="Left" Height="296" Margin="10,63,0,0" VerticalAlignment="Top" Width="372" Name="dataGrid" SelectionChanged="DataGrid_SelectionChanged"/>
+        </Grid>
 </Window>

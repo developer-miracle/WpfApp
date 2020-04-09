@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1062
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "WpfApp\WpfApp.csproj", "{3A14ED3B-26A9-45E1-85EF-11DEA77C14CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLogicLib", "DataLogicLib\DataLogicLib.csproj", "{439A4609-89D4-4782-A11E-D6C10ADFB1A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3A14ED3B-26A9-45E1-85EF-11DEA77C14CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A14ED3B-26A9-45E1-85EF-11DEA77C14CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A14ED3B-26A9-45E1-85EF-11DEA77C14CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{439A4609-89D4-4782-A11E-D6C10ADFB1A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{439A4609-89D4-4782-A11E-D6C10ADFB1A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{439A4609-89D4-4782-A11E-D6C10ADFB1A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{439A4609-89D4-4782-A11E-D6C10ADFB1A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataLogicLib\DataLogicLib.csproj">
+      <Project>{439a4609-89d4-4782-a11e-d6c10adfb1a0}</Project>
+      <Name>DataLogicLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
