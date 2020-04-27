@@ -47,7 +47,12 @@ namespace WpfApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            dataGrid.ItemsSource = dB.Select(textBox.Text);
+            DataView dataView = dB.Select(textBox.Text);
+            if (dataView == null)
+                MessageBox.Show("DB dont work");
+            else
+                dataGrid.ItemsSource = dataView;
+
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

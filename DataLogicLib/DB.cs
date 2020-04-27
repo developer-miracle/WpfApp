@@ -42,6 +42,7 @@ namespace DataLogicLib
             connectionString = ConfigurationManager.ConnectionStrings["LocalConnectToDB"].ConnectionString;
             //создаем объект подключения Sql и инициализируем строкой подключения к бд
             sqlConnection = new SqlConnection(connectionString);
+            GetDataAsync();
 
             //---------------SELECT запрос-----(все книги по автору)-------------------------
             //1
@@ -94,6 +95,12 @@ namespace DataLogicLib
             //sqlDataAdapter.UpdateCommand = updateCommand2;
             //--------------------------------------------------------------------------------
         }
+
+        async public void GetDataAsync()
+        {
+            await sqlConnection.OpenAsync();
+        }
+
         public DataView Select(string querry)
         {
             stringAuthor = querry;
@@ -114,16 +121,20 @@ namespace DataLogicLib
 
                 //автоматически добавляем команды INSERT/UPDATE/DELETE
                 sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
+
+
                 //заполняем DataSet из данными бд
                 sqlDataAdapter.Fill(dataSet, "Books");//метод автоматически разрывает соединение с бд
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                return null;
             }
             //возврат результата
             return dataSet.Tables["Books"].DefaultView;
         }
+        
         public void Update()
         {
             try
