@@ -28,12 +28,14 @@ namespace DataLogicLib
         private SqlCommand updateCommand;
         ////переменная для ручного создания команд INSERT/UPDATE/DELETE (делаем UPDATE процедуру вручную)
         private SqlCommand updateCommand2;
+        private SqlCommand updateCommand3;
         //создаем коллекцию для хранения параметров
         private SqlParameterCollection sqlParameter;
+        private SqlParameterCollection sqlParameter3;
         //строка, которую ввел пользователь
         private string stringAuthor;
 
-        private string SELECTstrAuthor = @"SELECT * FROM Books WHERE author_id = (SELECT id FROM Authors WHERE	[name] = N'@pName')";
+        private string SELECTstrAuthor = @"SELECT Books.Id, Books.[name], Books.price, Authors.[name] author, Categories.[name] category FROM Books JOIN Authors ON Books.Author_id = Authors.Id JOIN Categories ON Books.category_id = Categories.Id WHERE Authors.[name] = @pName";
 
         //SqlParameter parameter;
         public DB()
@@ -42,7 +44,7 @@ namespace DataLogicLib
             connectionString = ConfigurationManager.ConnectionStrings["LocalConnectToDB"].ConnectionString;
             //создаем объект подключения Sql и инициализируем строкой подключения к бд
             sqlConnection = new SqlConnection(connectionString);
-            GetDataAsync();
+            
 
             //---------------SELECT запрос-----(все книги по автору)-------------------------
             //1
@@ -88,17 +90,29 @@ namespace DataLogicLib
             sqlParameter.Add("@pAuthorId", SqlDbType.Int, 8, "author_id");
             sqlParameter.Add("@pCategoryId", SqlDbType.Int, 8, "category_id");
 
-            
+
+            updateCommand3 = new SqlCommand("UpdateBooksAuthorsCategories", sqlConnection);
+            //указываем тип комманды
+            updateCommand3.CommandType = CommandType.StoredProcedure;
+
+            //связываем с SqlCommand
+            sqlParameter3 = updateCommand3.Parameters;
+
+            sqlParameter3.Add("@pId", SqlDbType.Int, 8, "id");
+            sqlParameter3["@pId"].SourceVersion = DataRowVersion.Original;
+            sqlParameter3.Add("@pNameBook", SqlDbType.NVarChar, 200, "name");
+            sqlParameter3.Add("@pPrice", SqlDbType.Money, 8, "price");
+            sqlParameter3.Add("@pNameAuthor", SqlDbType.NVarChar, 200, "author");
+            sqlParameter3.Add("@pNameCategory", SqlDbType.NVarChar, 200, "category");
+
+
+
+
             sqlDataAdapter = new SqlDataAdapter();
             
             //используем процедуру для UPDATE
             //sqlDataAdapter.UpdateCommand = updateCommand2;
             //--------------------------------------------------------------------------------
-        }
-
-        async public void GetDataAsync()
-        {
-            await sqlConnection.OpenAsync();
         }
 
         public DataView Select(string querry)
@@ -111,17 +125,19 @@ namespace DataLogicLib
             selectCommand.Parameters.Add("@pName", SqlDbType.NVarChar).Value = stringAuthor;
             selectCommand.Parameters["@pName"].Size = 200;
             sqlDataAdapter.SelectCommand = selectCommand;
+
+            
             try
             {
                 //инициализируем контейнер для хранение таблиц
                 dataSet = new DataSet();
 
                 //инициализируем адаптер запросом SELECT и готовым подключением к бд
-                
+
 
                 //автоматически добавляем команды INSERT/UPDATE/DELETE
                 sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
-
+                
 
                 //заполняем DataSet из данными бд
                 sqlDataAdapter.Fill(dataSet, "Books");//метод автоматически разрывает соединение с бд
@@ -140,7 +156,7 @@ namespace DataLogicLib
             try
             {
                 //запись обновленных данных из контейнера в бд
-                sqlDataAdapter.UpdateCommand = updateCommand2;
+                sqlDataAdapter.UpdateCommand = updateCommand3;
                 sqlDataAdapter.Update(dataSet, "Books");
             }
             catch (Exception e)
