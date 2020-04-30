@@ -52,10 +52,6 @@ namespace WpfUI
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             buttonStartRootines.IsEnabled = textBox.Text == "" ? false : true;
-            //if (textBox.Text == "")
-            //    buttonStartRootines.IsEnabled = false;
-            //else
-            //    buttonStartRootines.IsEnabled = true;
         }
 
         

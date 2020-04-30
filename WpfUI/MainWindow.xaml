@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfUI"
         mc:Ignorable="d"
-        Title="RocketBot" Height="200" Width="260">
+        Title="bot" Height="200" Width="260">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -17,8 +17,8 @@
                 IsEnabled="False"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Margin="10, 0, 0, 0" Click="Button_Click">
-                    start
+                Margin="15, 0, 0, 0" Click="Button_Click">
+                start
             </Button>
             <TextBox
                 GotMouseCapture="TextBox_GotMouseCapture"
@@ -26,9 +26,17 @@
                 Name="textBox"
                 Margin="15, 0, 0, 0"
                 Width="110"
-                VerticalAlignment="Center"
-                Text="enter name button">
+                VerticalAlignment="Center">
+                enter name button
             </TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Margin="15, 15, 0, 0">
+                Move to coord
+            </Button>
         </StackPanel>
     </Grid>
     
