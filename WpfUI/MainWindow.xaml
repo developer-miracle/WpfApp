@@ -8,30 +8,28 @@
         Title="RocketBot" Height="200" Width="260">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="9*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
     <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <TextBlock 
-                Margin="15, 0, 0, 0"
-                FontWeight="Bold"
-                VerticalAlignment="Center">
-                hello
-            </TextBlock>
-            <TextBox
-                Margin="15, 0, 0, 0"
-                FontWeight="Bold"
-                VerticalAlignment="Center">
-                hello
-            </TextBox>
             <Button
-                
+                Name="buttonStartRootines"
+                IsEnabled="False"
+                HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                FontWeight="Bold"
-                Margin="0, 0, 0, 0">
-                inject
+                Margin="10, 0, 0, 0" Click="Button_Click">
+                    start
             </Button>
-    </StackPanel>
+            <TextBox
+                GotMouseCapture="TextBox_GotMouseCapture"
+                TextChanged="TextBox_TextChanged"
+                Name="textBox"
+                Margin="15, 0, 0, 0"
+                Width="110"
+                VerticalAlignment="Center"
+                Text="enter name button">
+            </TextBox>
+        </StackPanel>
     </Grid>
     
 </Window>
