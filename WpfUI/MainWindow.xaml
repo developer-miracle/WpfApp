@@ -6,12 +6,22 @@
         xmlns:local="clr-namespace:WpfUI"
         mc:Ignorable="d"
         Title="bot" Height="200" Width="260">
+        <!--<Window.Background>
+            
+                <ImageBrush ImageSource="img/1.jpg" >
+            </ImageBrush>
+        </Window.Background>-->
     <Grid>
+        <Grid.Background>
+            <ImageBrush
+                ImageSource="/Resources/1.jpg">
+            </ImageBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
-    <StackPanel Grid.Row="0" Orientation="Horizontal">
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Button
                 Name="buttonStartRootines"
                 IsEnabled="False"
@@ -34,10 +44,9 @@
             <Button
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Margin="15, 15, 0, 0">
-                Move to coord
-            </Button>
+                Margin="15, 15, 0, 0" Content="Move to coord" Click="Button_Click_1"/>
         </StackPanel>
+        
     </Grid>
     
 </Window>

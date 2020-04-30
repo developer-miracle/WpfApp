@@ -19,7 +19,7 @@ namespace WpfUI
 
         public void Press()
         {
-            timer = new System.Threading.Timer((state) => { SendKeys.SendWait(Button); }, null, 0, 1000);
+            timer = new System.Threading.Timer((state) => { SendKeys.SendWait(Button); }, null, 1000, 1000);
         }
         public void StopPress()
         {

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{64A0F7DB-DB87-418D-99A7-6EA61DCFABAC}</ProjectGuid>
+    <ProjectGuid>{F933CBFD-A5C2-4FB1-834D-75131858ABFF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>WpfUI</RootNamespace>
     <AssemblyName>WpfUI</AssemblyName>
@@ -96,6 +96,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

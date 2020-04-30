@@ -26,6 +26,7 @@ namespace WpfUI
         {
             InitializeComponent();
             buttonIsPressed = false;
+            textBox.IsEnabled = true;
             buttonStartRootines.IsEnabled = false;
         }
 
@@ -33,6 +34,7 @@ namespace WpfUI
         {
             if (buttonIsPressed)
             {
+                textBox.IsEnabled = true;
                 buttonControl.StopPress();
                 buttonControl = null;
                 buttonStartRootines.Content = "start";
@@ -42,6 +44,7 @@ namespace WpfUI
             {
                 if (textBox.Text == "")
                     return;
+                textBox.IsEnabled = false;
                 buttonControl = new ButtonControl(/*string.Concat('{', textBox.Text, '}')*/textBox.Text);
                 buttonControl.Press();
                 buttonStartRootines.Content = "stop";
@@ -61,6 +64,9 @@ namespace WpfUI
             textBox.Text = "";
         }
 
-        
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
