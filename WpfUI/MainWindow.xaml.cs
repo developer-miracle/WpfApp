@@ -25,10 +25,13 @@ namespace WpfUI
         public MainWindow()
         {
             InitializeComponent();
+            
             buttonIsPressed = false;
             textBox.IsEnabled = true;
             buttonStartRootines.IsEnabled = false;
         }
+
+        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

@@ -6,11 +6,7 @@
         xmlns:local="clr-namespace:WpfUI"
         mc:Ignorable="d"
         Title="bot" Height="200" Width="260">
-        <!--<Window.Background>
-            
-                <ImageBrush ImageSource="img/1.jpg" >
-            </ImageBrush>
-        </Window.Background>-->
+        
     <Grid>
         <Grid.Background>
             <ImageBrush
