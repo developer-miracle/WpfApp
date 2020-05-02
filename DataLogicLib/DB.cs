@@ -11,6 +11,21 @@ namespace DataLogicLib
 {
     public class DB
     {
+
+        //NuGet ConfigurationManager
+        //формируем строку подключения из App.config
+        //string connectionString = ConfigurationManager.ConnectionStrings["LocalConnectToDB"].ConnectionString;
+
+        //Создание строки подключения с помощью класса SqlConnectionStringBuilder
+        //SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder();
+        //sqlConnectionStringBuilder.UserID = @"sa";
+        //sqlConnectionStringBuilder.Password = @"Passw0rd%";
+        //sqlConnectionStringBuilder.InitialCatalog = @"BOOKSTORAGE";
+        //sqlConnectionStringBuilder.DataSource = @"192.168.0.110,1433";
+        //string connectionString = sqlConnectionStringBuilder.ToString();
+
+
+
         //контейнер для хранения таблиц
         public DataSet dataSet;
 
